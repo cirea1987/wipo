@@ -17,12 +17,14 @@ class Index extends BaseController
         $tongbu_url = "https://www3.wipo.int/branddb/jsp/select.jsp";
         $search_str='{"p":{"search":{"sq":[{"te":"benz","fi":"BRAND"}]}},"type":"brand","la":"en","qi":"1-kK37hbpy1+jLIvMTWa9nwurOgr9d9zCcRCanexGYX/U=","queue":1,"_":"11569"}';
         $search=LZString::compressToBase64($search_str);
-        $op['CURLOPT_USERAGENT']="UA";
-        $op['CURLOPT_HTTPHEADER']=array(
-            'Host:www3.wipo.int', 
-            'Origin:https://www3.wipo.int' //模拟浏览器CORS跨域请求
-          );
-   
-        $result = Http::sendRequest($tongbu_url, ['qz' =>  $search], 'POST',  $op);
+        var_dump( $search);exit;
+       // $op['CURLOPT_USERAGENT']="UA";
+        // $op['CURLOPT_HTTPHEADER']=array(
+        //     'Host:www3.wipo.int', 
+        //     'Origin:https://www3.wipo.int' //模拟浏览器CORS跨域请求
+        //   );
+        //  var_dump($op);exit;
+        $result = Http::sendRequest($tongbu_url, ['qz' =>  $search], 'POST',  []);
+        var_dump($result);exit;
     }
 }
